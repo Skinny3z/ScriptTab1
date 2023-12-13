@@ -178,7 +178,7 @@ local RootPart = Player.Character.HumanoidRootPart
 
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/yDragonUw/uiLIB/main/UI-LIB'))()
 
-local Window = library:CreateWindow("TPS Hub By Skinny", "Version:3.0", 10044538000)
+local Window = library:CreateWindow("Simply Hub TPS", "Version:3.0", 10044538000)
 
 local Tab = Window:CreateTab("Scripts")
 
@@ -186,7 +186,6 @@ local FPage = Tab:CreateFrame("Funções")
 local LPPage = Tab:CreateFrame("LocalPlayer")
 local BPage = Tab:CreateFrame("Ball")
 local MRPage = Tab:CreateFrame("Mobile Reach")
-local TPPage = Tab:CreateFrame("Teleports")
 local CRPage = Tab:CreateFrame("Novidades")
 
 FPage:CreateLabel("Funções Novas[Use por sua conta em Risco]")
