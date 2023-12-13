@@ -178,7 +178,7 @@ local RootPart = Player.Character.HumanoidRootPart
 
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/yDragonUw/uiLIB/main/UI-LIB'))()
 
-local Window = library:CreateWindow("TPS Script Free", "Version:2.8", 10044538000)
+local Window = library:CreateWindow("TPS Hub By Skinny", "Version:3.0", 10044538000)
 
 local Tab = Window:CreateTab("Scripts")
 
@@ -190,7 +190,48 @@ local TPPage = Tab:CreateFrame("Teleports")
 local CRPage = Tab:CreateFrame("Novidades")
 
 FPage:CreateLabel("Funções Novas[Use por sua conta em Risco]")
-FPage:CreateLabel("11.11.23 [Não Banível]")
+FPage:CreateLabel("13.12.23 [Não Banível]")
+
+
+FPage:CreateToggle("Auto Tackle", "Auto Tackle The Ball", function(arg)
+if arg then
+_G.MODT = true
+    while _G.MODT do
+    wait()
+    for i,v in pairs(game.Workspace:GetDescendants()) do
+    if v.Name == "TPS" and v:IsA("Part") then
+    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude <= 6 then
+       local ModuleKick = require(game:GetService("Players").LocalPlayer.Backpack.Module)
+ModuleKick.Tackle()
+end
+end
+end
+end
+    else
+    _G.MODT = false
+end
+end)
+
+
+FPage:CreateToggle("Auto Shoot", "Atire a bola automaticamente quando você estiver perto", function(arg)
+if arg then
+_G.MOD = true
+    while _G.MOD do
+    wait()
+    for i,v in pairs(game.Workspace:GetDescendants()) do
+    if v.Name == "TPS" and v:IsA("Part") then
+    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude <= 6 then
+       local ModuleKick = require(game:GetService("Players").LocalPlayer.Backpack.Module)
+ModuleKick.Kick()
+ModuleKick.Kick2()
+end
+end
+end
+end
+    else
+    _G.MOD = false
+end
+end)
 
 FPage:CreateToggle("Auto Farm", "Seu personagem irá marcar gols automaticamente.", function (arg)
 if arg then
@@ -680,5 +721,5 @@ setclipboard("https://www.youtube.com/@nianawa7615")
 end)
 CRPage:CreateLabel("Scripts & Functions:Skinny")
 CRPage:CreateLabel("UI Library:Vanis UI lib [Modificado por Skinny]")
-CRPage:CreateLabel("Ultima Atualização: 11.11.23")
-CRPage:CreateLabel("Noticia Sobre o Script:Coisas que chegaram[Auto Farm, Stop Ball, Infinite Yield]")
+CRPage:CreateLabel("Ultima Atualização: 13.12.23")
+CRPage:CreateLabel("Updates: New UI, New functions.")
