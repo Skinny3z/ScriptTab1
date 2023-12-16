@@ -191,7 +191,6 @@ local CRPage = Tab:CreateFrame("Novidades")
 FPage:CreateLabel("Funções Novas[Use por sua conta em Risco]")
 FPage:CreateLabel("13.12.23 [Não Banível]")
 
-
 FPage:CreateToggle("Auto Tackle", "Auto Tackle The Ball", function(arg)
 if arg then
 _G.MODT = true
@@ -210,7 +209,6 @@ end
     _G.MODT = false
 end
 end)
-
 
 FPage:CreateToggle("Auto Shoot", "Atire a bola automaticamente quando você estiver perto", function(arg)
 if arg then
