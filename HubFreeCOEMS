@@ -178,7 +178,7 @@ local RootPart = Player.Character.HumanoidRootPart
 
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/yDragonUw/uiLIB/main/UI-LIB'))()
 
-local Window = library:CreateWindow("Simply Hub TPS", "Version:3.0", 10044538000)
+local Window = library:CreateWindow("W-Skinny", "v2", 10044538000)
 
 local Tab = Window:CreateTab("Scripts")
 
@@ -190,6 +190,135 @@ local CRPage = Tab:CreateFrame("Novidades")
 
 FPage:CreateLabel("Funções Novas[Use por sua conta em Risco]")
 FPage:CreateLabel("13.12.23 [Não Banível]")
+
+FPage:CreateButton("Mudar Mapa e level", "", function()
+ local player = game.Players.LocalPlayer
+        local soccerField = workspace.SoccerFieldParts.SoccerField
+
+        spawn(function()
+            while true do
+                -- Delete Dirt
+                local dirt = soccerField:FindFirstChild("Dirt")
+                if dirt then
+                    dirt:Destroy()
+                end
+
+                -- Change SoccerField material and color
+                soccerField.Material = Enum.Material.Granite
+                soccerField.Color = Color3.new(41/255, 99/255, 27/255)
+
+                -- Change Player's Score Level Font to Cartoon font
+                local playerGui = player:WaitForChild("PlayerGui")
+                local startScreen = playerGui:WaitForChild("Start")
+                local scores = startScreen:WaitForChild("Scores")
+                local levelLabel = scores:WaitForChild("Level")
+                levelLabel.Font = Enum.Font.Cartoon
+
+                -- Wait for 1 minute before repeating
+                wait(60)  -- 60 seconds is 1 minute
+            end
+        end)
+
+FPage:CreateButton("Night Sky", "", function()
+	while true do
+			game.Lighting.TimeOfDay = "00:00:00"
+			wait(0.1)
+			end	
+	end)
+
+FPage:CreateToggle("Auto Tackle", "Auto Tackle The Ball", function(arg)
+if arg then
+_G.MODT = true
+    while _G.MODT do
+    wait()
+    for i,v in pairs(game.Workspace:GetDescendants()) do
+    if v.Name == "TPS" and v:IsA("Part") then
+    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude <= 6 then
+       local ModuleKick = require(game:GetService("Players").LocalPlayer.Backpack.Module)
+ModuleKick.Tackle()
+end
+end
+end
+end
+    else
+    _G.MODT = false
+end
+end)
+
+FPage:CreateToggle("Auto Shoot", "Atire a bola automaticamente quando você estiver perto", function(arg)
+if arg then
+_G.MOD = true
+    while _G.MOD do
+    wait()
+    for i,v in pairs(game.Workspace:GetDescendants()) do
+    if v.Name == "TPS" and v:IsA("Part") then
+    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude <= 6 then
+       local ModuleKick = require(game:GetService("Players").LocalPlayer.Backpack.Module)
+ModuleKick.Kick()
+ModuleKick.Kick2()
+end
+end
+end
+end
+    else
+    _G.MOD = false
+end
+end)
+
+FPage:CreateToggle("Auto Farm", "Seu personagem irá marcar gols automaticamente.", function (arg)
+if arg then
+_G.AUTOFARM = true
+while _G.AUTOFARM do
+wait()
+local HRPRotation = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Rotation
+local GoalPST = game.Workspace.TPSSystem.TPS.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = HRPRotation + GoalPST.Position
+    local A_1 = game:GetService("Workspace").TPSSystem.TPS
+local A_2 = game:GetService("Players").LocalPlayer.Character.Head
+local Event = game:GetService("Workspace").FE.Actions.Tackle
+Event:FireServer(A_1, A_2)
+
+local Events2 = game:GetService("Workspace").FE.Kick.RemoteEvent2
+Events2:FireServer()
+if game.Players.LocalPlayer.TeamColor == BrickColor.new("Bright red") then
+game.Players.LocalPlayer.PlayerGui.LockScript.SetLock.Value = true
+game.Workspace.CurrentCamera.CFrame = CFrame.lookAt(game.Workspace.CurrentCamera.CFrame.Position + Vector3.new(0, 45, 0),game.Workspace.BlueGoal.Part.Position)
+end
+if game.Players.LocalPlayer.TeamColor == BrickColor.new("Bright blue") then
+game.Players.LocalPlayer.PlayerGui.LockScript.SetLock.Value = true
+game.Workspace.CurrentCamera.CFrame = CFrame.lookAt(game.Workspace.CurrentCamera.CFrame.Position + Vector3.new(0, 45, 0),game.Workspace.RedGoal.Part.Position)
+end
+end
+    else
+_G.AUTOFARM = false
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Lines.Line12.CFrame
+game.Players.LocalPlayer.PlayerGui.LockScript.SetLock.Value = false
+end
+end)
+
+FPage:CreateToggle("Auto Rasteira", "Auto Rasteira para inf fast", function(arg)
+if arg then
+_G.HoldGround = true
+while _G.HoldGround do
+wait()
+game:GetService("Players").LocalPlayer.Backpack.Ground.Value = true
+end
+
+    else
+        _G.HoldGround = false
+        wait(1)
+        game:GetService("Players").LocalPlayer.Backpack.Ground.Value = false
+end
+end)
+
+FPage:CreateButton("Remove Map", "Remove o Mapa para tirar o Lag", function()
+   for i,v in pairs(game.Workspace:GetChildren()) do
+       if v.Name == "Map" then
+           v:Destroy()
+       end
+   end
+end)
 
 FPage:CreateButton("Infinite Yield Admin", "Use Comandos de Admnistrador para trolar", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
