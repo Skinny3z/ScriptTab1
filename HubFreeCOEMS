@@ -191,34 +191,6 @@ local CRPage = Tab:CreateFrame("Novidades")
 FPage:CreateLabel("Funções Novas[Use por sua conta em Risco]")
 FPage:CreateLabel("13.12.23 [Não Banível]")
 
-FPage:CreateButton("Mudar Mapa e level", "", function()
- local player = game.Players.LocalPlayer
-        local soccerField = workspace.SoccerFieldParts.SoccerField
-
-        spawn(function()
-            while true do
-                -- Delete Dirt
-                local dirt = soccerField:FindFirstChild("Dirt")
-                if dirt then
-                    dirt:Destroy()
-                end
-
-                -- Change SoccerField material and color
-                soccerField.Material = Enum.Material.Granite
-                soccerField.Color = Color3.new(41/255, 99/255, 27/255)
-
-                -- Change Player's Score Level Font to Cartoon font
-                local playerGui = player:WaitForChild("PlayerGui")
-                local startScreen = playerGui:WaitForChild("Start")
-                local scores = startScreen:WaitForChild("Scores")
-                local levelLabel = scores:WaitForChild("Level")
-                levelLabel.Font = Enum.Font.Cartoon
-
-                -- Wait for 1 minute before repeating
-                wait(60)  -- 60 seconds is 1 minute
-            end
-        end)
-
 FPage:CreateToggle("Auto Tackle", "Auto Tackle The Ball", function(arg)
 if arg then
 _G.MODT = true
