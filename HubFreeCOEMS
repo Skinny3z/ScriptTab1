@@ -191,45 +191,6 @@ local CRPage = Tab:CreateFrame("Novidades")
 FPage:CreateLabel("Funções Novas[Use por sua conta em Risco]")
 FPage:CreateLabel("13.12.23 [Não Banível]")
 
-FPage:CreateToggle("Auto Tackle", "Auto Tackle The Ball", function(arg)
-if arg then
-_G.MODT = true
-    while _G.MODT do
-    wait()
-    for i,v in pairs(game.Workspace:GetDescendants()) do
-    if v.Name == "TPS" and v:IsA("Part") then
-    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude <= 6 then
-       local ModuleKick = require(game:GetService("Players").LocalPlayer.Backpack.Module)
-ModuleKick.Tackle()
-end
-end
-end
-end
-    else
-    _G.MODT = false
-end
-end)
-
-FPage:CreateToggle("Auto Shoot", "Atire a bola automaticamente quando você estiver perto", function(arg)
-if arg then
-_G.MOD = true
-    while _G.MOD do
-    wait()
-    for i,v in pairs(game.Workspace:GetDescendants()) do
-    if v.Name == "TPS" and v:IsA("Part") then
-    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude <= 6 then
-       local ModuleKick = require(game:GetService("Players").LocalPlayer.Backpack.Module)
-ModuleKick.Kick()
-ModuleKick.Kick2()
-end
-end
-end
-end
-    else
-    _G.MOD = false
-end
-end)
-
 FPage:CreateToggle("Auto Farm", "Seu personagem irá marcar gols automaticamente.", function (arg)
 if arg then
 _G.AUTOFARM = true
