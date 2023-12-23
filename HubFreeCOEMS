@@ -219,13 +219,6 @@ FPage:CreateButton("Mudar Mapa e level", "", function()
             end
         end)
 
-FPage:CreateButton("Night Sky", "", function()
-	while true do
-			game.Lighting.TimeOfDay = "00:00:00"
-			wait(0.1)
-			end	
-	end)
-
 FPage:CreateToggle("Auto Tackle", "Auto Tackle The Ball", function(arg)
 if arg then
 _G.MODT = true
